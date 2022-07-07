@@ -1,0 +1,3 @@
+schema @sdl(files: ["schema/walkin.graphql"]) {
+  query: Query
+}

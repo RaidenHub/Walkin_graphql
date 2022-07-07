@@ -1,0 +1,38 @@
+type Food {
+  _id: ID!
+  name: String!
+  price: Float!
+  description: String!
+  image: String!
+  discount: Float!
+  category: String!
+  foodType: String!
+  status: String!
+  toppings: [Topping!]
+  dips: [Dip!]
+  sauces: [Sauce!]
+  extras: [Extra!]
+  numberOfFreeToppings: Int!
+  numberOfFreeDips: Int!
+  numberOfFreeSauces: Int!
+  numberOfFreeExtras: Int!
+}
+type Topping {
+  name: String!
+  price: Float!
+}
+type Dip {
+  name: String!
+  price: Float!
+}
+type Sauce {
+  name: String!
+  price: Float!
+}
+type Extra {
+  name: String!
+  price: Float!
+}
+type Query {
+  getFood: [Food!] @rest(endpoint: "https://walk--in.herokuapp.com/food/")
+}

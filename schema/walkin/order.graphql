@@ -1,0 +1,43 @@
+type Items {
+  name: String
+  price: Int
+  quantity: Int
+  userId: String
+  foodId: String
+}
+
+type Order {
+  total: Int
+  discount: Int
+  paymentMethod: String
+  paymentId: String
+  userId: String
+  status: String
+  items: [Items]
+}
+
+type Query {
+  getOrder: [Order]
+    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: GET)
+}
+type Mutation {
+  addToOrder(
+    name: String
+    price: Int
+    quantity: Int
+    userId: String
+    foodId: String
+  ): Order
+    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: POST)
+  updateOrder(
+    _id: ID
+    name: String
+    price: Int
+    quantity: Int
+    userId: String
+    foodId: String
+  ): Order
+    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: PUT)
+  deleteOrder(_id: ID): Order
+    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: DELETE)
+}

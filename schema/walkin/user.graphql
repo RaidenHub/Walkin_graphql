@@ -1,0 +1,54 @@
+type User {
+  userId: String
+  email: String
+  name: String
+  phone: String
+  address: String
+  city: String
+  state: String
+  zip: String
+  country: String
+  isActive: Boolean
+  isDeleted: Boolean
+}
+type Query {
+  getUser(userId: String!): User
+    @rest(endpoint: "https://walk--in.herokuapp.com/user/", method: GET)
+  getUsers: [User]
+    @rest(endpoint: "https://walk--in.herokuapp.com/users/", method: GET)
+}
+type Mutation {
+  createUser(
+    email: String
+    name: String
+    phone: String
+    address: String
+    city: String
+    state: String
+    zip: String
+    country: String
+    isActive: Boolean
+    isDeleted: Boolean
+  ): User
+    @rest(endpoint: "https://walk--in.herokuapp.com/user/", method: POST)
+  updateUser(
+    _id: ID
+    userId: String
+    email: String
+    name: String
+    phone: String
+    address: String
+    city: String
+    state: String
+    zip: String
+    country: String
+    isActive: Boolean
+    isDeleted: Boolean
+  ): User
+    @rest(endpoint: "https://walk--in.herokuapp.com/user/{_id}", method: PUT)
+  deleteUser(_id: ID): User
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/user/{_id}"
+      method: DELETE
+    )
+}

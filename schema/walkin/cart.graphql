@@ -1,0 +1,33 @@
+type Cart {
+  name: String
+  price: Int
+  quantity: Int
+  userId: String
+  foodId: String
+}
+
+type Query {
+  getCart: [Cart!] @rest(endpoint: "https://walk--in.herokuapp.com/cart/")
+}
+
+type Mutation {
+  addToCart(
+    name: String
+    price: Int
+    quantity: Int
+    userId: String
+    foodId: String
+  ): Cart
+    @rest(endpoint: "https://walk--in.herokuapp.com/cart/", method: POST)
+  updateCart(
+    _id: ID!
+    name: String
+    price: Int
+    quantity: Int
+    userId: String
+    foodId: String
+  ): Cart
+    @rest(endpoint: "https://walk--in.herokuapp.com/cart/{_id}", method: PUT)
+  removeFromCart(_id: ID!): Cart
+    @rest(endpoint: "https://walk--in.herokuapp.com/cart/", method: DELETE)
+}

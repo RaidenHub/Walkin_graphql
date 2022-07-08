@@ -1,3 +1,13 @@
-schema @sdl(files: ["schema/walkin.graphql"]) {
+schema
+  @sdl(
+    files: [
+      "schema/walkin/cart.graphql"
+      "schema/walkin/food.graphql"
+      "schema/walkin/order.graphql"
+      "schema/walkin/shopper.graphql"
+      "schema/walkin/user.graphql"
+    ]
+  ) {
   query: Query
+  mutation: Mutation
 }

@@ -1,0 +1,68 @@
+type Shopper {
+  userId: String
+  email: String
+  name: String
+  phone: String
+  address: String
+  city: String
+  state: String
+  zip: String
+  country: String
+  isActive: Boolean
+  isDeleted: Boolean
+  category: String
+  subCategory: String
+}
+
+type Query {
+  getShoppers: [Shopper]
+    @rest(endpoint: "https://walk--in.herokuapp.com/shopper/", method: GET)
+  getShopper(userId: String!): Shopper
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/shopper/{userId}"
+      method: GET
+    )
+}
+type Mutation {
+  createShopper(
+    userId: String
+    email: String
+    name: String
+    phone: String
+    address: String
+    city: String
+    state: String
+    zip: String
+    country: String
+    isActive: Boolean
+    isDeleted: Boolean
+    category: String
+    subCategory: String
+  ): Shopper
+    @rest(endpoint: "https://walk--in.herokuapp.com/shopper/", method: POST)
+  updateShopper(
+    _id: ID!
+    userId: String
+    email: String
+    name: String
+    phone: String
+    address: String
+    city: String
+    state: String
+    zip: String
+    country: String
+    isActive: Boolean
+    isDeleted: Boolean
+    category: String
+    subCategory: String
+  ): Shopper
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/shopper/{_id}"
+      method: PUT
+    )
+  deleteShopper(userId: ID!): Shopper
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/shopper/{userId}"
+      method: DELETE
+    )
+}

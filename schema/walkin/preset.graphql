@@ -1,0 +1,77 @@
+type Sauces {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+type Extras {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+type Dips {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+type Toppings {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+type Preset {
+  name: String
+  description: String
+  price: Int
+  quantity: Int
+  userId: String
+  foodId: String
+  sauces: [Sauces]
+  extras: [Extras]
+  dips: [Dips]
+  toppings: [Toppings]
+}
+
+type Query {
+  getPresets: [Preset!]
+    @rest(endpoint: "https://walk--in.herokuapp.com/presets/", method: GET)
+  getPreset(id: String!): Preset
+    @rest(endpoint: "https://walk--in.herokuapp.com/presets/{id}", method: GET)
+}
+type Mutation {
+  createPreset(
+    name: String!
+    description: String!
+    price: Int!
+    quantity: Int!
+    userId: String!
+    foodId: String!
+    sauces: [Sauces]
+    extras: [Extras]
+    dips: [Dips]
+    toppings: [Toppings]
+  ): Preset
+    @rest(endpoint: "https://walk--in.herokuapp.com/presets/", method: POST)
+  updatePreset(
+    id: String!
+    name: String!
+    description: String!
+    price: Int!
+    quantity: Int!
+    userId: String!
+    foodId: String!
+    sauces: [Sauces]
+    extras: [Extras]
+    dips: [Dips]
+    toppings: [Toppings]
+  ): Preset
+    @rest(endpoint: "https://walk--in.herokuapp.com/presets/{id}", method: PUT)
+  deletePreset(id: String!): Preset
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/presets/{id}"
+      method: DELETE
+    )
+}

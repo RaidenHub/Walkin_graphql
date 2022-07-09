@@ -1,27 +1,50 @@
 type Cart {
-  name: String
+  _id: String
   price: Int
   quantity: Int
   userId: String
   foodId: String
+  sauces: [Sauces]
+  extras: [Extras]
+  dips: [Dips]
+  toppings: [Toppings]
+}
+type Sauces {
+  name: String
+  price: Int
+  quantity: Int
 }
 
+type Extras {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+type Dips {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+type Toppings {
+  name: String
+  price: Int
+  quantity: Int
+}
 type Query {
   getCart: [Cart!] @rest(endpoint: "https://walk--in.herokuapp.com/cart/")
 }
 
 type Mutation {
   addToCart(
-    name: String
     price: Int
     quantity: Int
     userId: String
     foodId: String
-  ): Cart
-    @rest(endpoint: "https://walk--in.herokuapp.com/cart/", method: POST)
+  ): Cart @rest(endpoint: "https://walk--in.herokuapp.com/cart/", method: POST)
   updateCart(
-    _id: ID!
-    name: String
+    _id: String!
     price: Int
     quantity: Int
     userId: String

@@ -17,10 +17,11 @@ type Shopper {
 type Query {
   getShoppers: [Shopper]
     @rest(endpoint: "https://walk--in.herokuapp.com/shopper/", method: GET)
-  getShopper(userId: String!): Shopper
+  getShopper(token: String!): Shopper
     @rest(
-      endpoint: "https://walk--in.herokuapp.com/shopper/{userId}"
+      endpoint: "https://walk--in.herokuapp.com/shopper/"
       method: GET
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
     )
 }
 type Mutation {
@@ -38,10 +39,15 @@ type Mutation {
     isDeleted: Boolean
     category: String
     subCategory: String
+    token: String
   ): Shopper
-    @rest(endpoint: "https://walk--in.herokuapp.com/shopper/", method: POST)
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/shopper/"
+      method: POST
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
   updateShopper(
-    _id: ID!
+    id: ID!
     userId: String
     email: String
     name: String
@@ -57,12 +63,14 @@ type Mutation {
     subCategory: String
   ): Shopper
     @rest(
-      endpoint: "https://walk--in.herokuapp.com/shopper/{_id}"
+      endpoint: "https://walk--in.herokuapp.com/shopper/$id"
       method: PUT
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
     )
-  deleteShopper(userId: ID!): Shopper
+  deleteShopper(id: ID!, token: String): Shopper
     @rest(
-      endpoint: "https://walk--in.herokuapp.com/shopper/{userId}"
+      endpoint: "https://walk--in.herokuapp.com/shopper/$id"
       method: DELETE
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
     )
 }

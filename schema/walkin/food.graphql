@@ -33,6 +33,24 @@ type Food {
   numberOfFreeSauces: Int!
   numberOfFreeExtras: Int!
 }
+# toppingsInput, dipsInput, saucesInput, extrasInput
+input toppingsInput {
+  name: String!
+  price: Float!
+}
+input dipsInput {
+  name: String!
+  price: Float!
+}
+input saucesInput {
+  name: String!
+  price: Float!
+}
+input extrasInput {
+  name: String!
+  price: Float!
+}
+
 type Query  {
   getFoods: [Food!]
   @rest(
@@ -53,6 +71,10 @@ type Mutation  {
     category: String!
     foodType: String!
     status: String!
+    toppings: [toppingsInput!]
+    dips: [dipsInput!]
+    sauces: [saucesInput!]
+    extras: [extrasInput!]
     numberOfFreeToppings: Int!
     numberOfFreeDips: Int!
     numberOfFreeSauces: Int!
@@ -72,6 +94,10 @@ type Mutation  {
     category: String!
     foodType: String!
     status: String!
+    toppings: [toppingsInput!]
+    dips: [dipsInput!]
+    sauces: [saucesInput!]
+    extras: [extrasInput!]
     numberOfFreeToppings: Int!
     numberOfFreeDips: Int!
     numberOfFreeSauces: Int!

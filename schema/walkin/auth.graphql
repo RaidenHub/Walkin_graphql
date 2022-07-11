@@ -1,0 +1,15 @@
+type accessToken {
+  accessToken: String
+}
+
+input auth {
+  email: String
+  password: String
+  roles: String
+}
+type Mutation {
+  login(email: String, password: String): accessToken
+    @rest(endpoint: "https://walk--in.herokuapp.com/auth/login", method: POST)
+  signup(email: String, password: String, roles: String): accessToken
+    @rest(endpoint: "https://walk--in.herokuapp.com/auth/signup", method: POST)
+}

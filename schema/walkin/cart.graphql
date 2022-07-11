@@ -32,25 +32,87 @@ type Toppings {
   price: Int
   quantity: Int
 }
+input SaucesInput {
+  name: String
+  price: Int
+  quantity: Int
+}
+input ExtrasInput {
+  name: String
+  price: Int
+  quantity: Int
+}
+input DipsInput {
+  name: String
+  price: Int
+  quantity: Int
+}
+input ToppingsInput {
+  name: String
+  price: Int
+  quantity: Int
+}
+input CartInput {
+  price: Int
+  quantity: Int
+  userId: String
+  foodId: String
+  sauces: [SaucesInput]
+  extras: [ExtrasInput]
+  dips: [DipsInput]
+  toppings: [ToppingsInput]
+}
 type Query {
-  getCart: [Cart!] @rest(endpoint: "https://walk--in.herokuapp.com/cart/")
+  getCart(token: String!): [Cart!]
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/cart/"
+      method: GET
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
+  getCartById(id: String!, token: String): Cart
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/cart/$id"
+      method: GET
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
 }
 
 type Mutation {
   addToCart(
-    price: Int
-    quantity: Int
-    userId: String
-    foodId: String
-  ): Cart @rest(endpoint: "https://walk--in.herokuapp.com/cart/", method: POST)
+      price: Int
+      quantity: Int
+      userId: String
+      foodId: String
+      sauces: [SaucesInput]
+      extras: [ExtrasInput]
+      dips: [DipsInput]
+      toppings: [ToppingsInput]
+     token: String!): Cart
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/cart/"
+      method: POST
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
   updateCart(
-    _id: String!
-    price: Int
-    quantity: Int
-    userId: String
-    foodId: String
-  ): Cart
-    @rest(endpoint: "https://walk--in.herokuapp.com/cart/{_id}", method: PUT)
-  removeFromCart(_id: ID!): Cart
-    @rest(endpoint: "https://walk--in.herokuapp.com/cart/", method: DELETE)
+      id: String!
+      price: Int
+      quantity: Int
+      userId: String
+      foodId: String
+      sauces: [SaucesInput]
+      extras: [ExtrasInput]
+      dips: [DipsInput]
+      toppings: [ToppingsInput]
+     token: String!): Cart
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/cart/$id"
+      method: PUT
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
+  removeFromCart(id: ID!, token: String!): Cart
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/cart/$id"
+      method: DELETE
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
 }

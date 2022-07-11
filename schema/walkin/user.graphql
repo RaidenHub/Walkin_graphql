@@ -12,8 +12,12 @@ type User {
   isDeleted: Boolean
 }
 type Query {
-  getUser(userId: String!): User
-    @rest(endpoint: "https://walk--in.herokuapp.com/user/", method: GET)
+  getUser(token: String!): User
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/user/"
+      method: GET
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
   getUsers: [User]
     @rest(endpoint: "https://walk--in.herokuapp.com/users/", method: GET)
 }
@@ -29,10 +33,15 @@ type Mutation {
     country: String
     isActive: Boolean
     isDeleted: Boolean
+    token: String!
   ): User
-    @rest(endpoint: "https://walk--in.herokuapp.com/user/", method: POST)
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/user/"
+      method: POST
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
   updateUser(
-    _id: ID
+    id: ID
     userId: String
     email: String
     name: String
@@ -44,11 +53,10 @@ type Mutation {
     country: String
     isActive: Boolean
     isDeleted: Boolean
+    token: String!
   ): User
-    @rest(endpoint: "https://walk--in.herokuapp.com/user/{_id}", method: PUT)
-  deleteUser(_id: ID): User
-    @rest(
-      endpoint: "https://walk--in.herokuapp.com/user/{_id}"
-      method: DELETE
-    )
+    @rest(endpoint: "https://walk--in.herokuapp.com/user/$id}", method: PUT,
+    headers: [{ name: "Authorization", value: "Bearer $token" }])
+  deleteUser(id: ID, token: String): User
+    @rest(endpoint: "https://walk--in.herokuapp.com/user/$id", method: DELETE, headers: [{ name: "Authorization", value: "Bearer $token" }])
 }

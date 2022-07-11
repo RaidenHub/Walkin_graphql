@@ -15,10 +15,25 @@ type Order {
   status: String
   items: [Items]
 }
-
+# itemsInput
+input ItemsInput {
+  name: String
+  price: Int
+  quantity: Int
+  userId: String
+  foodId: String
+}
 type Query {
-  getOrder: [Order]
-    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: GET)
+  getOrder(token: String): [Order]
+    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: GET,
+    headers:[
+      {name: "Authorization", value: "Bearer $token"}
+    ])
+    getOrderById(id: String, token: String): Order
+    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: GET,
+    headers:[
+      {name: "Authorization", value: "Bearer $token"}
+    ])
 }
 type Mutation {
   addToOrder(
@@ -27,17 +42,28 @@ type Mutation {
     quantity: Int
     userId: String
     foodId: String
+    items: ItemsInput
+    token: String
   ): Order
-    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: POST)
+    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: POST,
+    headers:[
+      {name: "Authorization", value: "Bearer $token"}
+    ])
   updateOrder(
-    _id: ID
+    id: ID
     name: String
     price: Int
     quantity: Int
     userId: String
     foodId: String
+    items: ItemsInput
+    token: String
   ): Order
-    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: PUT)
-  deleteOrder(_id: ID): Order
-    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: DELETE)
+    @rest(endpoint: "https://walk--in.herokuapp.com/order/$id", method: PUT, headers:[
+      {name: "Authorization", value: "Bearer $token"}
+    ])
+  deleteOrder(id: ID, token: String): Order
+    @rest(endpoint: "https://walk--in.herokuapp.com/order/$id", method: DELETE, headers:[
+      {name: "Authorization", value: "Bearer $token"}
+    ])
 }

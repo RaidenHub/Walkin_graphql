@@ -6,6 +6,7 @@ schema
       "schema/walkin/order.graphql"
       "schema/walkin/shopper.graphql"
       "schema/walkin/user.graphql"
+      "schema/walkin/auth.graphql"
     ]
   ) {
   query: Query

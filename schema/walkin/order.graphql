@@ -25,15 +25,17 @@ input ItemsInput {
 }
 type Query {
   getOrder(token: String): [Order]
-    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: GET,
-    headers:[
-      {name: "Authorization", value: "Bearer $token"}
-    ])
-    getOrderById(id: String, token: String): Order
-    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: GET,
-    headers:[
-      {name: "Authorization", value: "Bearer $token"}
-    ])
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/order/"
+      method: GET
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
+  getOrderById(id: String, token: String): Order
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/order/"
+      method: GET
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
 }
 type Mutation {
   addToOrder(
@@ -42,13 +44,14 @@ type Mutation {
     quantity: Int
     userId: String
     foodId: String
-    items: ItemsInput
+    items: [ItemsInput]
     token: String
   ): Order
-    @rest(endpoint: "https://walk--in.herokuapp.com/order/", method: POST,
-    headers:[
-      {name: "Authorization", value: "Bearer $token"}
-    ])
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/order/"
+      method: POST
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
   updateOrder(
     id: ID
     name: String
@@ -59,11 +62,15 @@ type Mutation {
     items: ItemsInput
     token: String
   ): Order
-    @rest(endpoint: "https://walk--in.herokuapp.com/order/$id", method: PUT, headers:[
-      {name: "Authorization", value: "Bearer $token"}
-    ])
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/order/$id"
+      method: PUT
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
   deleteOrder(id: ID, token: String): Order
-    @rest(endpoint: "https://walk--in.herokuapp.com/order/$id", method: DELETE, headers:[
-      {name: "Authorization", value: "Bearer $token"}
-    ])
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/order/$id"
+      method: DELETE
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
 }

@@ -1,27 +1,38 @@
 type Items {
-  name: String
   price: Int
   quantity: Int
   userId: String
-  foodId: String
+  customeName: String
+  shopId: String
+  productId: String
+  toppings: [Toppings]
+  dips: [Dips]
+  extras: [Extras]
+  sauces: [Sauces]
 }
 
 type Order {
+  items: [Items]
   total: Int
   discount: Int
   paymentMethod: String
   paymentId: String
   userId: String
+  shopId: String
   status: String
-  items: [Items]
 }
 # itemsInput
 input ItemsInput {
-  name: String
   price: Int
   quantity: Int
   userId: String
-  foodId: String
+  customeName: String
+  shopId: String
+  productId: String
+  toppings: [ToppingsInput]
+  dips: [DipsInput]
+  extras: [ExtrasInput]
+  sauces: [SaucesInput]
 }
 type Query {
   getOrder(token: String): [Order]
@@ -42,9 +53,15 @@ type Mutation {
     name: String
     price: Int
     quantity: Int
-    userId: String
-    foodId: String
     items: [ItemsInput]
+    total: Int
+    discount: Int
+    paymentMethod: String
+    paymentId: String
+    userId: String
+    customeName: String
+    shopId: String
+    status: String
     token: String
   ): Order
     @rest(

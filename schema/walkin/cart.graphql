@@ -3,11 +3,12 @@ type Cart {
   price: Int
   quantity: Int
   userId: String
-  foodId: String
-  sauces: [Sauces]
-  extras: [Extras]
-  dips: [Dips]
+  shopId: String
+  productId: String
   toppings: [Toppings]
+  dips: [Dips]
+  extras: [Extras]
+  sauces: [Sauces]
 }
 type Sauces {
   name: String
@@ -52,16 +53,7 @@ input ToppingsInput {
   price: Int
   quantity: Int
 }
-input CartInput {
-  price: Int
-  quantity: Int
-  userId: String
-  foodId: String
-  sauces: [SaucesInput]
-  extras: [ExtrasInput]
-  dips: [DipsInput]
-  toppings: [ToppingsInput]
-}
+
 type Query {
   getCart(token: String!): [Cart!]
     @rest(
@@ -79,31 +71,35 @@ type Query {
 
 type Mutation {
   addToCart(
-      price: Int
-      quantity: Int
-      userId: String
-      foodId: String
-      sauces: [SaucesInput]
-      extras: [ExtrasInput]
-      dips: [DipsInput]
-      toppings: [ToppingsInput]
-     token: String!): Cart
+    _id: String
+    price: Int
+    quantity: Int
+    userId: String
+    shopId: String
+    productId: String
+    toppings: [ToppingsInput]
+    dips: [DipsInput]
+    extras: [ExtrasInput]
+    sauces: [SaucesInput]
+    token: String!
+  ): Cart
     @rest(
       endpoint: "https://walk--in.herokuapp.com/cart/"
       method: POST
       headers: [{ name: "Authorization", value: "Bearer $token" }]
     )
   updateCart(
-      id: String!
-      price: Int
-      quantity: Int
-      userId: String
-      foodId: String
-      sauces: [SaucesInput]
-      extras: [ExtrasInput]
-      dips: [DipsInput]
-      toppings: [ToppingsInput]
-     token: String!): Cart
+    _id: String!
+    price: Int
+    quantity: Int
+    userId: String
+    foodId: String
+    sauces: [SaucesInput]
+    extras: [ExtrasInput]
+    dips: [DipsInput]
+    toppings: [ToppingsInput]
+    token: String!
+  ): Cart
     @rest(
       endpoint: "https://walk--in.herokuapp.com/cart/$id"
       method: PUT

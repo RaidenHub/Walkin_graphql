@@ -1,6 +1,6 @@
 type Order {
   _id: String
-  items: [CartInput]
+  items: [Cart]
   total: Int
   discount: Int
   paymentMethod: String

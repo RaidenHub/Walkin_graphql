@@ -1,0 +1,13 @@
+type Order {
+  _id: String
+  items: [CartInput]
+  total: Int
+  discount: Int
+  paymentMethod: String
+  paymentId: String
+  userId: String
+  customeName: String
+  shopId: String
+  status: String
+  createdAt: String
+}

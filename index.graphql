@@ -7,6 +7,9 @@ schema
       "schema/walkin/shopper.graphql"
       "schema/walkin/user.graphql"
       "schema/walkin/auth.graphql"
+      "schema/walkin/foodschema.graphql"
+      "schema/walkin/cartschema.graphql"
+      "schema/walkin/orderschema.graphql"
     ]
   ) {
   query: Query

@@ -23,6 +23,7 @@ type Toppings {
 }
 
 type Preset {
+  id: String
   name: String
   description: String
   price: Int
@@ -37,11 +38,17 @@ type Preset {
 
 type Query {
   getPresets(token: String!): [Preset]
-  @rest(endpoint: "https://walk--in.herokuapp.com/presets/",
-  method: GET, headers:[{name : "Authorization", value: "Bearer $token"}])
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/presets/"
+      method: GET
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
   getPresetById(id: String!): Preset
-  @rest(endpoint: "https://walk--in.herokuapp.com/presets/$id",
-  method: GET, headers:[{name : "Authorization", value: "Bearer $token"}])
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/presets/$id"
+      method: GET
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
 }
 type Mutation {
   createPreset(
@@ -57,8 +64,11 @@ type Mutation {
     toppings: [Toppings]
     token: String!
   ): Preset
-    @rest(endpoint: "https://walk--in.herokuapp.com/presets/", method: POST,
-    headers:[{name : "Authorization", value: "Bearer $token"}])
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/presets/"
+      method: POST
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
   updatePreset(
     id: String!
     name: String!
@@ -72,11 +82,15 @@ type Mutation {
     dips: [Dips]
     toppings: [Toppings]
   ): Preset
-    @rest(endpoint: "https://walk--in.herokuapp.com/presets/$id", method: PUT, headers:[{name : "Authorization", value: "Bearer $token"}])
+    @rest(
+      endpoint: "https://walk--in.herokuapp.com/presets/$id"
+      method: PUT
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
+    )
   deletePreset(id: String!): Preset
     @rest(
       endpoint: "https://walk--in.herokuapp.com/presets/$id"
-      method: DELETE,
-      headers:[{name : "Authorization", value: "Bearer $token"}]
+      method: DELETE
+      headers: [{ name: "Authorization", value: "Bearer $token" }]
     )
 }

@@ -1,0 +1,70 @@
+type Cart {
+  _id: String
+  price: Int
+  quantity: Int
+  userId: String
+  shopId: String
+  productId: String
+  toppings: [Toppings]
+  dips: [Dips]
+  extras: [Extras]
+  sauces: [Sauces]
+}
+input CartInput {
+  price: Int
+  quantity: Int
+  userId: String
+  shopId: String
+  productId: String
+  toppings: [ToppingsCartInput]
+  dips: [DipsCartInput]
+  extras: [ExtrasCartInput]
+  sauces: [SaucesCartInput]
+}
+
+type SaucesCart {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+type ExtrasCart {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+type DipsCart {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+type ToppingsCart {
+  name: String
+  price: Int
+  quantity: Int
+}
+input SaucesCartInput {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+input ExtrasCartInput {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+input DipsCartInput {
+  name: String
+  price: Int
+  quantity: Int
+}
+
+input ToppingsCartInput {
+  name: String
+  price: Int
+  quantity: Int
+}

@@ -1,0 +1,54 @@
+type Sauces {
+  name: String
+  price: Int
+}
+
+type Extras {
+  name: String
+  price: Int
+}
+
+type Dips {
+  name: String
+  price: Int
+}
+
+type Toppings {
+  name: String
+  price: Int
+}
+input SaucesInput {
+  name: String
+  price: Int
+}
+input ExtrasInput {
+  name: String
+  price: Int
+}
+input DipsInput {
+  name: String
+  price: Int
+}
+input ToppingsInput {
+  name: String
+  price: Int
+}
+type Food {
+  _id: String
+  name: String!
+  price: Float!
+  description: String!
+  image: String!
+  discount: Float!
+  category: String!
+  foodType: String!
+  status: String!
+  toppings: [Toppings]
+  dips: [Dips]
+  sauces: [Sauces]
+  extras: [Extras]
+  numberOfFreeToppings: Int!
+  numberOfFreeDips: Int!
+  numberOfFreeSauces: Int!
+  numberOfFreeExtras: Int!
+}

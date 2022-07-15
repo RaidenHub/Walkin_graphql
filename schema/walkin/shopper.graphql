@@ -1,5 +1,6 @@
 type Shopper {
   _id: String
+  image: String
   userId: String
   email: String
   name: String
@@ -27,6 +28,7 @@ type Query {
 }
 type Mutation {
   createShopper(
+    image: String
     userId: String
     email: String
     name: String
@@ -49,6 +51,7 @@ type Mutation {
     )
   updateShopper(
     id: String
+    image: String
     userId: String
     email: String
     name: String

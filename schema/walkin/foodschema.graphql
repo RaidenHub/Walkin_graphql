@@ -43,6 +43,7 @@ input ToppingsInput {
 }
 type Food {
   _id: String
+  shopId: String
   name: String!
   price: Float!
   description: String!

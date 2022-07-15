@@ -1,0 +1,43 @@
+ {
+        "_id": "62c6e45c9a7cda8259d8c4f0",
+        "category": "string",
+        "dips": [
+          {
+            "isAvailable": null,
+            "name": "Haider",
+            "price": 123
+          }
+        ],
+        "description": "string",
+        "discount": 0,
+        "extras": [
+          {
+            "isAvailable": null,
+            "name": "Haider",
+            "price": 123
+          }
+        ],
+        "image": "string",
+        "foodType": "veg",
+        "name": "string",
+        "numberOfFreeExtras": 0,
+        "numberOfFreeDips": 0,
+        "numberOfFreeSauces": 0,
+        "numberOfFreeToppings": 0,
+        "price": 0,
+        "status": "available",
+        "sauces": [
+          {
+            "name": "Haider",
+            "isAvailable": null,
+            "price": 123
+          }
+        ],
+        "toppings": [
+          {
+            "isAvailable": null,
+            "name": "Haider",
+            "price": 123
+          }
+        ]
+      }

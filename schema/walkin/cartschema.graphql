@@ -5,10 +5,10 @@ type Cart {
   userId: String
   shopId: String
   productId: String
-  toppings: [Toppings]
-  dips: [Dips]
-  extras: [Extras]
-  sauces: [Sauces]
+  toppings: [ToppingsCart]
+  dips: [DipsCart]
+  extras: [ExtrasCart]
+  sauces: [SaucesCart]
 }
 input CartInput {
   price: Int
@@ -26,45 +26,53 @@ type SaucesCart {
   name: String
   price: Int
   quantity: Int
+  isAvailable: Boolean
 }
 
 type ExtrasCart {
   name: String
   price: Int
   quantity: Int
+  isAvailable: Boolean
 }
 
 type DipsCart {
   name: String
   price: Int
   quantity: Int
+  isAvailable: Boolean
 }
 
 type ToppingsCart {
   name: String
   price: Int
   quantity: Int
+  isAvailable: Boolean
 }
 input SaucesCartInput {
   name: String
   price: Int
   quantity: Int
+  isAvailable: Boolean
 }
 
 input ExtrasCartInput {
   name: String
   price: Int
   quantity: Int
+  isAvailable: Boolean
 }
 
 input DipsCartInput {
   name: String
   price: Int
   quantity: Int
+  isAvailable: Boolean
 }
 
 input ToppingsCartInput {
   name: String
   price: Int
   quantity: Int
+  isAvailable: Boolean
 }

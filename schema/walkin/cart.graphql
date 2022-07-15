@@ -20,10 +20,10 @@ type Mutation {
     userId: String
     shopId: String
     productId: String
-    toppings: [ToppingsInput]
-    dips: [DipsInput]
-    extras: [ExtrasInput]
-    sauces: [SaucesInput]
+    toppings: [ToppingsCartInput]
+    dips: [DipsCartInput]
+    extras: [ExtrasCartInput]
+    sauces: [SaucesCartInput]
     createdAt: DateTime
     token: String!
   ): Cart

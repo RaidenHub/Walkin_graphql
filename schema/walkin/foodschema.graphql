@@ -1,37 +1,45 @@
 type Sauces {
   name: String
   price: Int
+  isAvailable: Boolean
 }
 
 type Extras {
   name: String
   price: Int
+  isAvailable: Boolean
 }
 
 type Dips {
   name: String
   price: Int
+  isAvailable: Boolean
 }
 
 type Toppings {
   name: String
   price: Int
+  isAvailable: Boolean
 }
 input SaucesInput {
   name: String
   price: Int
+  isAvailable: Boolean
 }
 input ExtrasInput {
   name: String
   price: Int
+  isAvailable: Boolean
 }
 input DipsInput {
   name: String
   price: Int
+  isAvailable: Boolean
 }
 input ToppingsInput {
   name: String
   price: Int
+  isAvailable: Boolean
 }
 type Food {
   _id: String

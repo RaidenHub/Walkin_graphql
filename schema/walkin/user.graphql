@@ -20,7 +20,7 @@ type Query {
       headers: [{ name: "Authorization", value: "Bearer $token" }]
     )
   getUsers: [User]
-    @rest(endpoint: "https://walk--in.herokuapp.com/users/", method: GET)
+    @rest(endpoint: "https://walk--in.herokuapp.com/user/", method: GET)
 }
 type Mutation {
   createUser(
